@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infrastructure
+spec:
+  project: default
+  source:
+    path: ./environments/staging-cluster
+    repoURL: 'https://github.com/phucnguyen25392/argo-devops'
+    targetRevision: HEAD
+  destination:
+    namespace: argocd
+    server: 'https://kubernetes.default.svc'

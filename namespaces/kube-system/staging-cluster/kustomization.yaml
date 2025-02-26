@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ./base
+  - ../resources/sealed-secrets/staging-cluster
+  # - ../resources/metrics-server/staging-cluster
+  # - ../resources/kube-state-metrics/staging-cluster
+  # - ../resources/ingress-nginx/staging-cluster
+namespace: kube-system

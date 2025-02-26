@@ -1,0 +1,31 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kube-state-metrics
+  namespace: kube-system
+spec:
+  releaseName: kube-state-metrics
+  chart:
+    spec:
+      chart: kube-state-metrics
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community-repo
+        namespace: kube-system
+      version: 5.27.0
+  interval: 5m
+  values:
+    autosharding:
+      enabled: true
+
+    replicas: 1
+
+    # Change the deployment strategy when autosharding is disabled.
+    # ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy
+    # The default is "RollingUpdate" as per Kubernetes defaults.
+    # During a release, 'RollingUpdate' can lead to two running instances for a short period of time while 'Recreate' can create a small gap in data.
+    # updateStrategy: Recreate
+
+    # Number of old history to retain to allow rollback
+    # Default Kubernetes value is set to 10
+    revisionHistoryLimit: 8
