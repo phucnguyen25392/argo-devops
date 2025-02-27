@@ -1,19 +1,17 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
   name: metrics-server
-  namespace: kube-system
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
-  releaseName: metrics-server
-  chart:
-    spec:
-      chart: metrics-server
-      sourceRef:
-        kind: HelmRepository
-        name: bitnami-repos
-        namespace: flux-system
-      version: 7.2.13
-  interval: 5m
-  values:
-    apiService:
-      create: true
+  project: default
+  source:
+    chart: metrics-server
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 7.2.13
+  helm:
+    releaseName: metrics-server
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: argocd
