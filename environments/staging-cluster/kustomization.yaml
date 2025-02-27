@@ -4,5 +4,6 @@ resources:
 # - ../../namespaces/monitoring/staging-cluster
 # - ../../namespaces/api/staging-cluster
 # - ../../namespaces/k6-testing/staging-cluster
-- ../../namespaces/kube-system/staging-cluster
+#- ../../namespaces/kube-system/staging-cluster
+- ../../namespaces/kube-system/resources/metrics-server/base/metrics-server.yaml
 # - ../../namespaces/keda/staging-cluster

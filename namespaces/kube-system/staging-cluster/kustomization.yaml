@@ -5,4 +5,4 @@ resources:
   - ../resources/metrics-server/staging-cluster
   # - ../resources/kube-state-metrics/staging-cluster
   # - ../resources/ingress-nginx/staging-cluster
-namespace: kube-system
+namespace: argocd

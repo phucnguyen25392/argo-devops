@@ -14,4 +14,4 @@ spec:
     releaseName: metrics-server
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: argocd
+    namespace: kube-system
