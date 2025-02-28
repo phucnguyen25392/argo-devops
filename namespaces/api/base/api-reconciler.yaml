@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: api-reconciler
+spec:
+  project: default
+  source:
+    path: ./staging-cluster
+    repoURL: 'https://github.com/phucnguyen25392/argo-api'
+    targetRevision: master
+  destination:
+    namespace: api
+    server: 'https://kubernetes.default.svc'

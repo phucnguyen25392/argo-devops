@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 # - ../../namespaces/monitoring/staging-cluster
-# - ../../namespaces/api/staging-cluster
+- ../../namespaces/api/staging-cluster
 # - ../../namespaces/k6-testing/staging-cluster
 - ../../namespaces/kube-system/staging-cluster
 # - ../../namespaces/keda/staging-cluster
